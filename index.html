@@ -802,6 +802,12 @@ button, .tab-btn, .carousel-btn {
 
 <script>
 
+// Force scroll to top - runs before browser restores position
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+window.scrollTo(0, 0);
+	
 function showTab(name, btn) {
   const panels = document.querySelectorAll('.gallery-panel');
   const buttons = document.querySelectorAll('.tab-btn');
@@ -881,8 +887,6 @@ function closeLightbox() {
 
 // Attach swipe to both carousel containers
 document.addEventListener('DOMContentLoaded', function() {
-  // Scroll to top on load
-  window.scrollTo({ top: 0, behavior: 'instant' });
   addSwipe('parle-carousel', changeSlide);
   addSwipe('cadbury-carousel', changeSlide2);
 });
