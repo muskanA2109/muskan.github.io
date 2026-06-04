@@ -5,6 +5,10 @@
   if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual';
   }
+  // Remove hash from URL on load without affecting scroll
+  if (window.location.hash) {
+    history.replaceState(null, null, window.location.pathname);
+  }
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
