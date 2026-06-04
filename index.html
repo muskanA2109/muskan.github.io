@@ -196,6 +196,17 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,0.06);paddi
 .video-meta{font-size:0.74rem;color:var(--muted)}
 @media(max-width:600px){.video-grid{grid-template-columns:1fr}}
 
+/* REEL SECTION */
+.reel-grid{display:flex;gap:20px;flex-wrap:wrap}
+.reel-card{background:#000;border-radius:12px;overflow:hidden;border:1px solid var(--border);transition:border-color 0.2s;flex-shrink:0;width:220px}
+.reel-card:hover{border-color:#888}
+.reel-player-wrap{position:relative;aspect-ratio:9/16;background:#111}
+.reel-player-wrap video{width:100%;height:100%;display:block;object-fit:cover}
+.reel-card-info{padding:10px 12px;background:var(--black)}
+.reel-card-title{font-weight:600;font-size:0.78rem;color:var(--white);margin-bottom:2px}
+.reel-card-meta{font-size:0.68rem;color:rgba(255,255,255,0.38)}
+@media(max-width:600px){.reel-card{width:calc(50% - 10px)}.reel-grid{gap:12px}}
+@media(max-width:400px){.reel-card{width:100%}}
 /* ===== GLOBAL IMPROVEMENTS ===== */
 
 section {
@@ -531,7 +542,7 @@ button, .tab-btn, .carousel-btn {
     <button class="tab-btn" onclick="showTab('iim',this)">IIM Udaipur (3)</button>
     <button class="tab-btn" onclick="showTab('blue',this)">Blue Digital Media (3)</button>
     <button class="tab-btn" onclick="showTab('r3',this)">3R Infotech (8)</button>
-    <button class="tab-btn" onclick="showTab('videos',this)">Videos (2)</button>
+    <button class="tab-btn" onclick="showTab('videos',this)">Reels (2)</button>
   </div>
 
   <div id="tab-cyfuture" class="gallery-panel active">
@@ -608,57 +619,40 @@ button, .tab-btn, .carousel-btn {
     </div>
   </div>
 
-  <!-- VIDEOS TAB PANEL -->
-  <!-- ============================================================
-       HOW TO ADD YOUR VIDEOS:
-       1. Place your .mp4 files in a folder (e.g. videos/)
-       2. Set the src attribute on each <video> tag:
-            src="videos/your-reel.mp4"
-       3. Optionally set a poster thumbnail image:
-            poster="images/thumb1.jpg"
-       4. Update the video-title and video-meta text below.
-       ============================================================ -->
-  <div id="tab-videos" class="gallery-panel">
-    <div class="video-grid">
+  <!-- REELS PANEL -->
+<!-- To add your reels: set src="videos/yourfile.mp4" on each <video> tag -->
+<!-- Optionally set poster="images/thumb.jpg" for a thumbnail before play -->
+<div id="tab-videos" class="gallery-panel">
+  <div class="reel-grid">
 
-      <!-- VIDEO 1 -->
-      <div class="video-card">
-        <div class="video-wrapper">
-          <video
-            src="videos/3R Infotech reel.mp4"
-            controls
-            preload="metadata"
-            poster=""
-          >
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        <div class="video-info">
-          <div class="video-title">Video 1 — Title Here</div>
-          <div class="video-meta">Client / Campaign · Year</div>
-        </div>
+    <!-- REEL 1 -->
+    <div class="reel-card">
+      <div class="reel-player-wrap">
+        <video src="videos/3R Infotech reel.mp4" controls preload="metadata" playsinline poster="">
+          Your browser does not support the video tag.
+        </video>
       </div>
-
-      <!-- VIDEO 2 -->
-      <div class="video-card">
-        <div class="video-wrapper">
-          <video
-            src=""
-            controls
-            preload="metadata"
-            poster=""
-          >
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        <div class="video-info">
-          <div class="video-title">Video 2 — Title Here</div>
-          <div class="video-meta">Client / Campaign · Year</div>
-        </div>
+      <div class="reel-card-info">
+        <div class="reel-card-title">Reel — 3R Infotech</div>
+        <div class="reel-card-meta">3R Infotech · 2026</div>
       </div>
-
     </div>
+
+    <!-- REEL 2 -->
+    <div class="reel-card">
+      <div class="reel-player-wrap">
+        <video src="" controls preload="metadata" playsinline poster="">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="reel-card-info">
+        <div class="reel-card-title">Reel 2 — Title Here</div>
+        <div class="reel-card-meta">Client / Campaign · Year</div>
+      </div>
+    </div>
+
   </div>
+</div>
 
 </section>
 
