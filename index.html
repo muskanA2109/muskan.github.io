@@ -881,6 +881,8 @@ function closeLightbox() {
 
 // Attach swipe to both carousel containers
 document.addEventListener('DOMContentLoaded', function() {
+  // Scroll to top on load
+  window.scrollTo({ top: 0, behavior: 'instant' });
   addSwipe('parle-carousel', changeSlide);
   addSwipe('cadbury-carousel', changeSlide2);
 });
