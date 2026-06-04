@@ -192,6 +192,9 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,0.06);paddi
 .carousel-dot2{width:7px;height:7px;border-radius:50%;background:var(--border);border:none;cursor:pointer;padding:0;transition:background 0.2s}
 .carousel-dot2.active{background:var(--accent)}
 
+.carousel-dot3{width:7px;height:7px;border-radius:50%;background:var(--border);border:none;cursor:pointer;padding:0;transition:background 0.2s}
+.carousel-dot3.active{background:var(--accent)}
+
 /* VIDEO SECTION */
 .video-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;margin-top:8px}
 .video-card{background:var(--cream);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:border-color 0.2s}
@@ -745,7 +748,27 @@ button, .tab-btn, .carousel-btn {
   </div>
   <p class="carousel-meta">Created for <strong>@muskan.creativehub</strong> — a 10-slide marketing case study dissecting how Cadbury Dairy Milk's "Khaas Seat" IPL 2026 campaign used phygital strategy and emotional storytelling to create genuine brand love.</p>
 </div>
-
+<div class="carousel-wrap" style="margin-top:28px">
+  <div class="carousel-label">Work Sample — Spotify Case Study</div>
+  <div class="carousel-title-sm">A 4-slide carousel breaking down Spotify's content strategy.</div>
+  <div class="carousel-container" id="spotify-carousel">
+    <div class="carousel-track" id="spotify-track">
+      <div class="carousel-slide"><img onclick="openLightbox(this.src)" src="images/Spotify/Creative1.jpg" alt="Slide 1 — The Hook" loading="lazy"><div class="carousel-slide-label">Slide 1 — The Hook</div></div>
+      <div class="carousel-slide"><img onclick="openLightbox(this.src)" src="images/Spotify/Creative2.jpg" alt="Slide 2 — The Story" loading="lazy"><div class="carousel-slide-label">Slide 2 — The Story</div></div>
+      <div class="carousel-slide"><img onclick="openLightbox(this.src)" src="images/Spotify/Creative3.jpg" alt="Slide 3 — The Proof" loading="lazy"><div class="carousel-slide-label">Slide 3 — The Proof</div></div>
+      <div class="carousel-slide"><img onclick="openLightbox(this.src)" src="images/Spotify/Creative4.jpg" alt="Slide 4 — The Win" loading="lazy"><div class="carousel-slide-label">Slide 4 — The Win</div></div>
+    </div>
+    <button class="carousel-btn carousel-prev" onclick="changeSlide3(-1)" type="button">&#8592;</button>
+    <button class="carousel-btn carousel-next" onclick="changeSlide3(1)" type="button">&#8594;</button>
+  </div>
+  <div class="carousel-dots" id="spotify-dots">
+    <button class="carousel-dot3 active" onclick="goSlide3(0)" aria-label="Slide 1"></button>
+    <button class="carousel-dot3" onclick="goSlide3(1)" aria-label="Slide 2"></button>
+    <button class="carousel-dot3" onclick="goSlide3(2)" aria-label="Slide 3"></button>
+    <button class="carousel-dot3" onclick="goSlide3(3)" aria-label="Slide 4"></button>
+  </div>
+  <p class="carousel-meta">Created for <strong>@muskan.creativehub</strong> — a marketing case study carousel analysing Spotify's content strategy.</p>
+</div>
 </div>
 </section>
 
@@ -846,6 +869,16 @@ function changeSlide2(dir) {
   goSlide2((_slide2 + dir + _total2) % _total2);
 }
 
+/* ── CAROUSEL 3 (Spotify) ── */
+var _slide3 = 0, _total3 = 4;
+function goSlide3(n) {
+  _slide3 = n;
+  document.getElementById('spotify-track').style.transform = 'translateX(-' + (_slide3 * 100) + '%)';
+  document.querySelectorAll('.carousel-dot3').forEach(function(d,i){d.classList.toggle('active', i===_slide3);});
+}
+function changeSlide3(dir) {
+  goSlide3((_slide3 + dir + _total3) % _total3);
+}
 /* ── TOUCH / SWIPE SUPPORT ── */
 
 function addSwipe(containerId, changeFn) {
@@ -891,6 +924,7 @@ function closeLightbox() {
 document.addEventListener('DOMContentLoaded', function() {
   addSwipe('parle-carousel', changeSlide);
   addSwipe('cadbury-carousel', changeSlide2);
+  addSwipe('spotify-carousel', changeSlide3);
 });
 </script>
 </body>
